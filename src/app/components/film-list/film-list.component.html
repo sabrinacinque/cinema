@@ -1,1 +1,19 @@
-<p>film-list works!</p>
+<div class="container mt-4">
+  <h2 class="mb-4">Lista Film</h2>
+
+  <div class="film-grid">
+    <mat-card class="film-card" *ngFor="let film of filmList">
+      <mat-card-header>
+        <mat-card-title>{{ film.titolo }}</mat-card-title>
+        <mat-card-subtitle>{{ film.genere }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="'assets/images/' + film.locandina" alt="{{ film.titolo }}" width="auto" height="300">
+      <mat-card-content>
+        <p><strong>Regista:</strong> {{ film.regista }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">Dettagli</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

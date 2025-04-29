@@ -1,0 +1,17 @@
+.film-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.film-card {
+  width: 250px;
+  transition: transform 0.2s ease;
+}
+
+.film-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}

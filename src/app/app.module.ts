@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { FilmListComponent } from './components/film-list/film-list.component';
 import { NavbarComponent } from './components/mainComponents/navbar/navbar.component';
 import { FooterComponent } from './components/mainComponents/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -16,10 +20,14 @@ import { FooterComponent } from './components/mainComponents/footer/footer.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
