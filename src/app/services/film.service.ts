@@ -8,11 +8,17 @@ import { IFilm } from '../models/ifilm';
 })
 export class FilmService {
 
-  private apiUrl = 'http://localhost:8080/film/filmlist';//qua è dove gli dico di connettermi per la lista delle film, ho fatto il percorso da spring 
+  private apiUrl = 'http://localhost:8080/film';//qua è dove gli dico di connettermi per la lista delle film, ho fatto il percorso da spring
 
   constructor(private http: HttpClient) {}
 
   getFilms(): Observable<IFilm[]> {
-    return this.http.get<IFilm[]>(this.apiUrl);
+    return this.http.get<IFilm[]>(this.apiUrl + '/filmlist');
   }
+
+  getFilmById(id: number): Observable<IFilm> {
+    return this.http.get<IFilm>(`${this.apiUrl}/${id}`);
+  }
+
+
 }

@@ -12,7 +12,9 @@
         <p><strong>Regista:</strong> {{ film.regista }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary">Dettagli</button>
+        <button mat-raised-button color="primary" [routerLink]="['/film', film.id]">
+          Dettagli
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>
