@@ -1,21 +1,35 @@
-<div class="container mt-4">
-  <h2 class="mb-4">Lista Film</h2>
+<div class="container-fluid">
+  <h2 class="text-white mb-4">Film Consigliati</h2>
 
-  <div class="film-grid">
-    <mat-card class="film-card" style="background-color: black;" *ngFor="let film of filmList">
-      <mat-card-header>
-        <mat-card-title>{{ film.titolo }}</mat-card-title>
-        <mat-card-subtitle>{{ film.genere }}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image [src]="'assets/images/' + film.locandina" alt="{{ film.titolo }}" width="auto" height="300">
-      <mat-card-content>
-        <p><strong>Regista:</strong> {{ film.regista }}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary" [routerLink]="['/film', film.id]">
-          Dettagli
-        </button>
-      </mat-card-actions>
-    </mat-card>
+  <div class="position-relative">
+    <!-- Freccia sinistra -->
+    <button class="btn btn-outline-light position-absolute top-50 start-0 translate-middle-y z-1" (click)="scrollLeft()" style="z-index: 1;">
+      <i class="bi bi-chevron-left fs-3"></i>
+    </button>
+
+    <div #carousel class="d-flex flex-nowrap overflow-hidden mx-5 align-items-stretch" style="scroll-behavior: smooth;">
+      <ng-container *ngFor="let loop of loopArray">
+        <div *ngFor="let film of filmList" class="card bg-dark text-white me-3 col-2" style="min-height: 420px;">
+          <img [src]="'assets/images/' + film.locandina"
+               class="card-img-top object-fit-cover"
+               [alt]="film.titolo"
+               style="height: 500px; object-fit: cover;">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title">{{ film.titolo }}</h5>
+              <p class="card-text"><strong>{{ film.genere }}</strong></p>
+            </div>
+            <a [routerLink]="['/film', film.id]" class="btn btn-primary mt-auto">Dettagli</a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+
+
+    <!-- Freccia destra -->
+    <button class="btn btn-outline-light position-absolute top-50 end-0 translate-middle-y z-1" (click)="scrollRight()" style="z-index: 1;">
+      <i class="bi bi-chevron-right fs-3"></i>
+    </button>
   </div>
 </div>

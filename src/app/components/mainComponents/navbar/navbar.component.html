@@ -1,24 +1,16 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav class="sidenav" mode="over">
-    <mat-nav-list>
-      <a mat-list-item routerLink="/" (click)="sidenav.close()">Home</a>
-      <a mat-list-item routerLink="/chi-siamo" (click)="sidenav.close()">Chi siamo</a>
-      <a mat-list-item routerLink="/contatti" (click)="sidenav.close()">Contatti</a>
-      <a mat-list-item routerLink="/lavora-con-noi" (click)="sidenav.close()">Lavora con noi</a>
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button (click)="sidenav.toggle()" class="mobile-toggle">
-      <mat-icon>menu</mat-icon>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <span class="logo">Episushi</span>
-    <span class="spacer"></span>
-    <div class="desktop-links">
-      <a mat-button routerLink="/">Home</a>
-      <a mat-button routerLink="/chi-siamo">Chi siamo</a>
-      <a mat-button routerLink="/contatti">Contatti</a>
-      <a mat-button routerLink="/lavora-con-noi">Lavora con noi</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+      </div>
     </div>
-  </mat-toolbar>
-</mat-sidenav-container>
+  </div>
+</nav>
