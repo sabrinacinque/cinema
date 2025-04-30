@@ -1,0 +1,42 @@
+.sidenav-container {
+  height: 64px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.desktop-links {
+  display: flex;
+  gap: 16px;
+}
+
+.mobile-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-links {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .sidenav-container {
+    height: 100vh;
+  }
+}

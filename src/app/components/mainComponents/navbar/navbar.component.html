@@ -1,1 +1,24 @@
-<p>navbar works!</p>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" mode="over">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" (click)="sidenav.close()">Home</a>
+      <a mat-list-item routerLink="/chi-siamo" (click)="sidenav.close()">Chi siamo</a>
+      <a mat-list-item routerLink="/contatti" (click)="sidenav.close()">Contatti</a>
+      <a mat-list-item routerLink="/lavora-con-noi" (click)="sidenav.close()">Lavora con noi</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary" class="toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()" class="mobile-toggle">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="logo">Episushi</span>
+    <span class="spacer"></span>
+    <div class="desktop-links">
+      <a mat-button routerLink="/">Home</a>
+      <a mat-button routerLink="/chi-siamo">Chi siamo</a>
+      <a mat-button routerLink="/contatti">Contatti</a>
+      <a mat-button routerLink="/lavora-con-noi">Lavora con noi</a>
+    </div>
+  </mat-toolbar>
+</mat-sidenav-container>
