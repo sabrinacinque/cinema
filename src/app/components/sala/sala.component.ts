@@ -4,6 +4,7 @@ import { SalaService } from '../../services/sala.service';
 import { PostoService } from '../../services/posto.service';
 import { Isala } from '../../models/isala';
 import { Iposto } from '../../models/iposto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sala',
@@ -22,7 +23,10 @@ export class SalaComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private salaService: SalaService,
-    private postoService: PostoService
+    private postoService: PostoService,
+    private router: Router
+
+
   ) {}
 
   ngOnInit(): void {
@@ -96,5 +100,18 @@ export class SalaComponent implements OnInit {
     if (!posto.disponibile) return 'bg-danger';
     if (this.postiSelezionati.includes(posto.id)) return 'bg-warning';
     return 'bg-success';
+  }
+
+
+  vaiAConferma(): void {
+    const postiSelezionatiCompleti = this.posti.filter(p => this.postiSelezionati.includes(p.id));
+
+    this.router.navigate(['/conferma-prenotazione'], {
+      state: {
+        filmId: this.idFilm,
+        sala: this.sala,
+        posti: postiSelezionatiCompleti
+      }
+    });
   }
 }

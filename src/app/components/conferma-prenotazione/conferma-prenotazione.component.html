@@ -1,0 +1,31 @@
+<div class="container mt-5 text-white">
+  <h2 class="mb-4">Conferma Prenotazione</h2>
+
+  <form (ngSubmit)="confermaPrenotazione()" #prenotaForm="ngForm">
+    <div class="mb-3">
+      <label class="form-label">Nome</label>
+      <input type="text" class="form-control" [(ngModel)]="nome" name="nome" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Cognome</label>
+      <input type="text" class="form-control" [(ngModel)]="cognome" name="cognome" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" [(ngModel)]="email" name="email" required>
+    </div>
+
+    <h5 class="mt-4">Riepilogo:</h5>
+    <ul>
+      <li><strong>Film:</strong> {{ film?.titolo }}</li>
+      <li><strong>Sala:</strong> {{ sala?.nomeSala }}</li>
+      <li><strong>Posti selezionati:</strong> {{ codiciPosti.join(', ') }}</li>
+
+
+    </ul>
+
+    <button type="submit" class="btn btn-success mt-3" [disabled]="!prenotaForm.form.valid">
+      Conferma Prenotazione
+    </button>
+  </form>
+</div>

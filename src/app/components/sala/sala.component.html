@@ -39,7 +39,11 @@
     <p><span class="badge bg-danger">Occupato</span></p>
   </div>
 
-  <button class="btn btn-primary mt-4" [disabled]="postiSelezionati.length === 0">
-    Prenota
-  </button>
+  <button
+  class="btn btn-primary mt-4"
+  [disabled]="postiSelezionati.length === 0"
+  (click)="vaiAConferma()"
+>
+  Prenota
+</button>
 </div>
