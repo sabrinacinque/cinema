@@ -5,6 +5,8 @@ import { Iposto } from '../../models/iposto';
 import { Isala } from '../../models/isala';
 import { FilmService } from '../../services/film.service';
 import { IFilm } from '../../models/ifilm';
+import { PrenotazioneService } from '../../services/prenotazione.service';
+import { Iprenotazione } from '../../models/iprenotazione';
 
 @Component({
   selector: 'app-conferma-prenotazione',
@@ -23,7 +25,8 @@ export class ConfermaPrenotazioneComponent implements OnInit {
   constructor(
     private location: Location,
     private router: Router,
-    private filmService: FilmService
+    private filmService: FilmService,
+    private prenotazioneService: PrenotazioneService
   ) {
     const state = this.router.getCurrentNavigation()?.extras.state as {
       filmId: number,
@@ -47,21 +50,36 @@ export class ConfermaPrenotazioneComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  confermaPrenotazione(): void {
-    console.log('Prenotazione confermata:', {
-      nome: this.nome,
-      cognome: this.cognome,
-      email: this.email,
-      film: this.film,
-      sala: this.sala,
-      posti: this.posti.map(p => p.codice)
-    });
 
-    alert("Prenotazione confermata!");
-  }
 
 
   get codiciPosti(): string[] {
     return this.posti.map(p => p.codice);
+  }
+
+  confermaPrenotazione(): void {
+    const oggi = new Date();
+
+    for (const posto of this.posti) {
+      const prenotazione: Iprenotazione = {
+        nomeUtente: this.nome,
+        cognomeUtente: this.cognome,
+        emailUtente: this.email,
+        id_posto: posto.id,
+        data: oggi
+      };
+
+      this.prenotazioneService.inserisciPrenotazione(prenotazione).subscribe({
+        next: () => {
+          console.log('Prenotazione salvata per il posto:', posto.codice);
+        },
+        error: err => {
+          console.error('Errore nel salvataggio:', err);
+        }
+      });
+    }
+
+    alert("Prenotazione completata!");
+    this.router.navigate(['/']);
   }
 }
