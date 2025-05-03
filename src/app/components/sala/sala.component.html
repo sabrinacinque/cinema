@@ -1,18 +1,37 @@
-
 <div class="container text-center mt-5">
   <h2 class="text-white mb-4">Sala: {{ sala?.nomeSala }}</h2>
 
-  <div class="d-flex flex-wrap justify-content-center gap-2">
-    <button
-      *ngFor="let posto of posti"
-      class="btn"
-      [ngClass]="getStilePosto(posto)"
-      style="width: 60px; height: 60px; font-weight: bold;"
-      (click)="togglePosto(posto)"
-    >
-      {{ posto.codice }}
-    </button>
-  </div>
+  <!-- Itera su tutte le righe accoppiate -->
+  <ng-container *ngFor="let index of fileSinistra?.length ? [].constructor(fileSinistra.length) : [] ; let i = index">
+    <div class="d-flex justify-content-center mb-2">
+      <!-- Fila sinistra -->
+      <ng-container *ngFor="let posto of fileSinistra[i]">
+        <button
+          class="btn me-1"
+          [ngClass]="getStilePosto(posto)"
+          style="width: 60px; height: 60px; font-weight: bold;"
+          (click)="togglePosto(posto)">
+          {{ posto.codice }}
+        </button>
+      </ng-container>
+
+      <!-- Corridoio centrale -->
+      <div style="width: 80px;"></div>
+
+      <!-- Fila destra corrispondente -->
+      <ng-container *ngIf="fileDestra[i]">
+        <ng-container *ngFor="let posto of fileDestra[i]">
+          <button
+            class="btn me-1"
+            [ngClass]="getStilePosto(posto)"
+            style="width: 60px; height: 60px; font-weight: bold;"
+            (click)="togglePosto(posto)">
+            {{ posto.codice }}
+          </button>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
 
   <div class="mt-4 text-white">
     <p><span class="badge bg-success">Disponibile</span></p>
@@ -20,10 +39,7 @@
     <p><span class="badge bg-danger">Occupato</span></p>
   </div>
 
-  <button
-    class="btn btn-primary mt-4"
-    [disabled]="postiSelezionati.length === 0"
-  >
+  <button class="btn btn-primary mt-4" [disabled]="postiSelezionati.length === 0">
     Prenota
   </button>
 </div>

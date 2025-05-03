@@ -16,6 +16,9 @@ export class SalaComponent implements OnInit {
   posti: Iposto[] = [];
   postiSelezionati: number[] = [];
 
+  fileSinistra: Iposto[][] = [];
+  fileDestra: Iposto[][] = [];
+
   constructor(
     private route: ActivatedRoute,
     private salaService: SalaService,
@@ -25,7 +28,6 @@ export class SalaComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.idFilm = Number(params.get('id'));
-      console.log('ID film:', this.idFilm); // Debug
       if (this.idFilm) {
         this.caricaSalaEPosti(this.idFilm);
       }
@@ -36,18 +38,48 @@ export class SalaComponent implements OnInit {
     this.salaService.getSalaByFilmId(idFilm).subscribe({
       next: (sala) => {
         this.sala = sala;
-        console.log('Sala caricata:', sala);
 
         this.postoService.getPostiByFilmId(idFilm).subscribe({
           next: (posti) => {
             this.posti = posti;
-            console.log('Posti caricati:', posti);
+            this.organizzaPosti();
           },
           error: (err) => console.error('Errore nel caricamento dei posti:', err)
         });
       },
       error: (err) => console.error('Errore nel caricamento della sala:', err)
     });
+  }
+
+  organizzaPosti(): void {
+    const gruppi: { [lettera: string]: Iposto[] } = {};
+
+    // Raggruppa per lettera
+    for (const posto of this.posti) {
+      const lettera = posto.codice.charAt(0).toUpperCase();
+      if (!gruppi[lettera]) gruppi[lettera] = [];
+      gruppi[lettera].push(posto);
+    }
+
+    // Ordina per codice numerico dentro ogni gruppo
+    const lettereOrdinate = Object.keys(gruppi).sort();
+    const sinistra: Iposto[][] = [];
+    const destra: Iposto[][] = [];
+
+    lettereOrdinate.forEach((lettera, index) => {
+      const ordinati = gruppi[lettera].sort(
+        (a, b) => parseInt(a.codice.slice(1)) - parseInt(b.codice.slice(1))
+      );
+
+      if (index % 2 === 0) {
+        sinistra.push(ordinati);
+      } else {
+        destra.push(ordinati);
+      }
+    });
+
+    this.fileSinistra = sinistra;
+    this.fileDestra = destra;
   }
 
   togglePosto(posto: Iposto): void {
