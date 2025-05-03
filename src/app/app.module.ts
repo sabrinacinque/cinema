@@ -8,6 +8,10 @@ import { FilmListComponent } from './components/film-list/film-list.component';
 import { NavbarComponent } from './components/mainComponents/navbar/navbar.component';
 import { FooterComponent } from './components/mainComponents/footer/footer.component';
 import { DettagliFilmComponent } from './components/dettagli-film/dettagli-film.component';
+import { PrenotaComponent } from './components/prenota/prenota.component';
+import { FormsModule } from '@angular/forms';
+import { SalaComponent } from './components/sala/sala.component';
+
 
 
 @NgModule({
@@ -16,12 +20,15 @@ import { DettagliFilmComponent } from './components/dettagli-film/dettagli-film.
     FilmListComponent,
     NavbarComponent,
     FooterComponent,
-    DettagliFilmComponent
+    DettagliFilmComponent,
+    PrenotaComponent,
+    SalaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [

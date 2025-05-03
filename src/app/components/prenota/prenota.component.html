@@ -1,0 +1,17 @@
+<div class="container my-5">
+  <h2 class="mb-4 text-white">Quale film vuoi prenotare?</h2>
+
+  <select class="form-select" [(ngModel)]="selectedFilmId">
+    <option *ngFor="let film of filmList" [value]="film.id">
+      {{ film.titolo }}
+    </option>
+  </select>
+
+  <a
+    *ngIf="selectedFilmId"
+    [routerLink]="['/sala', selectedFilmId]"
+    class="btn btn-primary"
+  >
+    Avanti
+  </a>
+</div>
