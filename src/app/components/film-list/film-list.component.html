@@ -9,7 +9,7 @@
 
     <div #carousel class="d-flex flex-nowrap overflow-hidden mx-5 align-items-stretch" style="scroll-behavior: smooth;">
       <ng-container *ngFor="let loop of loopArray">
-        <div *ngFor="let film of filmList" class="card bg-dark text-white me-3 col-2" style="min-height: 420px;">
+        <div *ngFor="let film of filmList" class="card bg-dark text-white me-3 col-12 col-md-4 col-lg-2" style="min-height: 420px;">
           <img [src]="'assets/images/' + film.locandina"
                class="card-img-top object-fit-cover"
                [alt]="film.titolo"

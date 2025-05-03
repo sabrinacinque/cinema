@@ -5,4 +5,7 @@ export interface IFilm {
   regista : string;
   genere : string;
   locandina : string;
+  trailerlink : string;
+  riassunto : string;
+  sfondo:string
 }
