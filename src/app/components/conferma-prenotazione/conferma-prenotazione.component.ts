@@ -7,6 +7,7 @@ import { FilmService } from '../../services/film.service';
 import { IFilm } from '../../models/ifilm';
 import { PrenotazioneService } from '../../services/prenotazione.service';
 import { Iprenotazione } from '../../models/iprenotazione';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-conferma-prenotazione',
@@ -79,7 +80,14 @@ export class ConfermaPrenotazioneComponent implements OnInit {
       });
     }
 
-    alert("Prenotazione completata!");
-    this.router.navigate(['/']);
+    Swal.fire({
+      icon: 'success',
+      title: 'Prenotazione completata!',
+      text: 'Riceverai una conferma via email.',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ok'
+    }).then(() => {
+      this.router.navigate(['/']);
+    });
   }
 }
