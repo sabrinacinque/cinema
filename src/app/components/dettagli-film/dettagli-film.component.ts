@@ -13,6 +13,7 @@ import { FilmService } from '../../services/film.service';
 export class DettagliFilmComponent implements OnInit {
   film: IFilm | null = null;
   safeTrailerUrl: SafeResourceUrl | null = null;
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +29,7 @@ export class DettagliFilmComponent implements OnInit {
           next: (data) => {
             this.film = data;
             this.safeTrailerUrl = this.getEmbedUrl(this.film.trailerlink);
-            console.log("Film caricato:", this.film); // << CONTROLLA QUI
+            console.log("Film caricato:", this.film); // CONTROLLO COSA VIENE PASSATO
           },
           error: (err) => console.error('Errore nel recupero del film', err)
         });

@@ -1,5 +1,7 @@
-<div id="sfondoDettagli" [style.backgroundImage]="'url(assets/images/' + film?.sfondo + ')'">
-
+<div
+  id="sfondoDettagli"
+  [style.backgroundImage]="'url(assets/images/' + film?.sfondo + ')'"
+>
   <h1 class="text-center text-white pt-5">{{ film?.titolo }}</h1>
 
   <div class="d-flex justify-content-center align-items-center min-vh-100">
@@ -13,7 +15,8 @@
             height="500"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
+            allowfullscreen
+          >
           </iframe>
         </div>
         <div class="col-md-4 text-white text-center">
@@ -21,8 +24,15 @@
           <p class="fs-3">{{ film?.riassunto }}</p>
           <p class="fs-3"><strong>Genere:</strong> {{ film?.genere }}</p>
           <p class="fs-3"><strong>Regista:</strong> {{ film?.regista }}</p>
-          <a class="btn btn-warning mt-3" routerLink="/">Torna alla lista</a><br />
-          <a class="btn btn-success mt-3" routerLink="/prenota">Prenota</a>
+          <a class="btn btn-warning mt-3" routerLink="/">Torna alla lista</a
+          ><br />
+          <a
+            class="btn btn-success mt-3"
+            [routerLink]="['/sala', film.id]"
+            *ngIf="film"
+          >
+            Prenota
+          </a>
         </div>
       </div>
     </div>
