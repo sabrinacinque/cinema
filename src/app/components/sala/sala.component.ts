@@ -1,3 +1,4 @@
+import { FilmService } from './../../services/film.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SalaService } from '../../services/sala.service';
@@ -5,6 +6,7 @@ import { PostoService } from '../../services/posto.service';
 import { Isala } from '../../models/isala';
 import { Iposto } from '../../models/iposto';
 import { Router } from '@angular/router';
+import { IFilm } from '../../models/ifilm';
 
 @Component({
   selector: 'app-sala',
@@ -14,6 +16,7 @@ import { Router } from '@angular/router';
 export class SalaComponent implements OnInit {
   idFilm!: number;
   sala!: Isala;
+  film!: IFilm;
   posti: Iposto[] = [];
   postiSelezionati: number[] = [];
 
@@ -24,6 +27,7 @@ export class SalaComponent implements OnInit {
     private route: ActivatedRoute,
     private salaService: SalaService,
     private postoService: PostoService,
+    private filmService: FilmService,
     private router: Router
 
 
@@ -50,10 +54,20 @@ export class SalaComponent implements OnInit {
           },
           error: (err) => console.error('Errore nel caricamento dei posti:', err)
         });
+
+        // ⬇️ Carica anche il film
+        this.filmService.getFilmById(idFilm).subscribe({
+          next: (film) => {
+            this.film = film;
+          },
+          error: (err) => console.error('Errore nel caricamento del film:', err)
+        });
+
       },
       error: (err) => console.error('Errore nel caricamento della sala:', err)
     });
   }
+
 
   organizzaPosti(): void {
     const gruppi: { [lettera: string]: Iposto[] } = {};

@@ -1,4 +1,4 @@
-<div class="container my-5">
+<div class="container py-5 text-center">
   <h2 class="mb-4 text-white">Quale film vuoi prenotare?</h2>
 
   <select class="form-select" [(ngModel)]="selectedFilmId">
@@ -10,7 +10,7 @@
   <a
     *ngIf="selectedFilmId"
     [routerLink]="['/sala', selectedFilmId]"
-    class="btn btn-primary"
+    class="btn btn-success mt-5"
   >
     Avanti
   </a>
