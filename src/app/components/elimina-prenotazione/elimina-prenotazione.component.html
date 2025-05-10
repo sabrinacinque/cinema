@@ -1,0 +1,19 @@
+<div class="container">
+  <!-- caso non trovato -->
+  <div *ngIf="notFound" class="text-warning">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col alert alert-warning" role="alert">
+        <strong>Attenzione!</strong> La prenotazione con ID {{ id }} non è stata trovata oppure è già stata cancellata
+      </div>
+    </div>
+
+  </div>
+
+  <!-- caso conferma cancellazione -->
+  <div *ngIf="!notFound">
+    <h2>Annulla Prenotazione #{{ id }}</h2>
+    <p>Sei sicuro di voler annullare la tua prenotazione?</p>
+    <button class="btn btn-danger" (click)="conferma()">Sì, annulla</button>
+    <div *ngIf="error" class="text-danger mt-3">{{ error }}</div>
+  </div>
+</div>

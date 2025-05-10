@@ -12,6 +12,7 @@ import { PrenotaComponent } from './components/prenota/prenota.component';
 import { FormsModule } from '@angular/forms';
 import { SalaComponent } from './components/sala/sala.component';
 import { ConfermaPrenotazioneComponent } from './components/conferma-prenotazione/conferma-prenotazione.component';
+import { EliminaPrenotazioneComponent } from './components/elimina-prenotazione/elimina-prenotazione.component';
 
 
 
@@ -24,7 +25,8 @@ import { ConfermaPrenotazioneComponent } from './components/conferma-prenotazion
     DettagliFilmComponent,
     PrenotaComponent,
     SalaComponent,
-    ConfermaPrenotazioneComponent
+    ConfermaPrenotazioneComponent,
+    EliminaPrenotazioneComponent
   ],
   imports: [
     BrowserModule,

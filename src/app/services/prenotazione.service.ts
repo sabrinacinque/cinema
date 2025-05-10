@@ -15,4 +15,18 @@ export class PrenotazioneService {
   inserisciPrenotazione(prenotazione: Iprenotazione): Observable<any> {
     return this.http.post(`${this.baseUrl}/inserisci`, prenotazione);
   }
+
+
+  getPrenotazioni(): Observable<Iprenotazione[]> {
+    return this.http.get<Iprenotazione[]>(`${this.baseUrl}/tutte`);
+  }
+  getPrenotazioneById(id: number): Observable<Iprenotazione> {
+    return this.http.get<Iprenotazione>(`${this.baseUrl}/id/${id}`);
+  }
+  deletePrenotazione(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/eliminaprenotazione/${id}`);
+  }
+
+
+
 }
