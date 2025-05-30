@@ -21,7 +21,7 @@ export class PrenotazioneService {
     return this.http.get<Iprenotazione[]>(`${this.baseUrl}/tutte`);
   }
   getPrenotazioneById(id: number): Observable<Iprenotazione> {
-    return this.http.get<Iprenotazione>(`${this.baseUrl}/id/${id}`);
+    return this.http.get<Iprenotazione>(`${this.baseUrl}/${id}`);
   }
   deletePrenotazione(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/eliminaprenotazione/${id}`);
