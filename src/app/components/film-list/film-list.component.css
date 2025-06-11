@@ -1,19 +1,88 @@
+/* styles.css */
+
+/* 1) Hover sulle card */
 .card:hover {
   transform: scale(1.05);
-  transition: 0.3s ease;
+  transition: transform 0.3s ease;
   cursor: pointer;
 }
 
-/* Nasconde la scrollbar orizzontale su tutti i browser */
-::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel {
-  -ms-overflow-style: none;  /* IE e Edge */
+/* 2) Scrollbar nascosta solo nel carosello */
+.carousel-container {
+  -ms-overflow-style: none;  /* IE/Edge */
   scrollbar-width: none;     /* Firefox */
+}
+.carousel-container::-webkit-scrollbar {
+  display: none;             /* Chrome/Safari */
+}
+
+/* 3) Logo responsive */
+.my-logo {
+  max-width: 80%;
+  height: auto;
+}
+
+/* 4) Carousel cards: 3 per view su mobile/tablet, 6 su desktop */
+.carousel-card {
+  flex: 0 0 auto;
+  width: calc((100% - 2rem) / 3);  /* 3 card + gap totale 2rem */
+}
+@media (min-width: 992px) {
+  .carousel-card {
+    width: 15%;  /* ~6 card su desktop */
+  }
+}
+
+/* 5) Immagini film: altezza uniforme */
+.card-img-top {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;   /* fisso su mobile/tablet */
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .card-img-top {
+    height: 280px; /* su tablet */
+  }
+}
+@media (min-width: 992px) {
+  .card-img-top {
+    height: 400px; /* su desktop */
+  }
+}
+
+/* 6) Bottoni di navigazione */
+.carousel-nav-btn {
+  z-index: 5;
+  border: none !important;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  transition: background 0.2s;
+}
+.carousel-nav-btn:focus,
+.carousel-nav-btn:active {
+  background: rgba(0,0,0,0.4);
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Dimensioni bottoni responsive (desktop only) */
+@media (max-width: 767.98px) {
+  .carousel-nav-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 1.1rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .carousel-nav-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 1.3rem;
+  }
+}
+
+/* Nascondi i bottoni su tablet/mobile */
+@media (max-width: 991.98px) {
+  .carousel-nav-btn {
+    display: none !important;
+  }
 }

@@ -1,3 +1,4 @@
+<!-- app.component.html -->
 <div
   id="sfondoDettagli"
   [style.backgroundImage]="'url(assets/images/' + film?.sfondo + ')'"
@@ -6,26 +7,30 @@
 
   <div class="d-flex justify-content-center align-items-center min-vh-100">
     <div class="container content-overlay">
-      <div class="row justify-content-between align-items-center">
-        <div class="col-md-7 mb-4 mb-md-0">
-          <iframe
-            *ngIf="safeTrailerUrl"
-            [src]="safeTrailerUrl"
-            width="100%"
-            height="500"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          >
-          </iframe>
+      <!-- layout column su mobile/tablet, row su desktop -->
+      <div class="row flex-column flex-lg-row justify-content-between align-items-center">
+
+        <!-- VIDEO: full-width su xs/md, 7/12 su lg+ -->
+        <div class="col-12 col-lg-7 mb-4 mb-lg-0">
+          <!-- Bootstrap ratio 16:9 -->
+          <div class="ratio ratio-16x9">
+            <iframe
+              *ngIf="safeTrailerUrl"
+              [src]="safeTrailerUrl"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
-        <div class="col-md-4 text-white text-center">
+
+        <!-- TESTO: full-width su xs/md, 4/12 su lg+ -->
+        <div class="col-12 col-lg-4 text-white text-center">
           <p class="fs-2">TRAMA</p>
           <p class="fs-3">{{ film?.riassunto }}</p>
           <p class="fs-3"><strong>Genere:</strong> {{ film?.genere }}</p>
           <p class="fs-3"><strong>Regista:</strong> {{ film?.regista }}</p>
-          <a class="btn btn-warning mt-3" routerLink="/">Torna alla lista</a
-          ><br />
+          <a class="btn btn-warning mt-3" routerLink="/">Torna alla lista</a><br />
           <a
             class="btn btn-success mt-3"
             [routerLink]="['/sala', film.id]"
@@ -34,6 +39,7 @@
             Prenota
           </a>
         </div>
+
       </div>
     </div>
   </div>
