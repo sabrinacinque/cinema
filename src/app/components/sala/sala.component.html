@@ -17,32 +17,30 @@
       let i = index
     "
   >
-    <div class="d-flex justify-content-center mb-2">
+    <div class="d-flex justify-content-center mb-2 align-items-center">
       <!-- Fila sinistra -->
       <ng-container *ngFor="let posto of fileSinistra[i]">
         <button
-          class="btn me-1"
+          class="btn btn-posto me-1"
           [ngClass]="getStilePosto(posto)"
-          style="width: 60px; height: 60px; font-weight: bold"
           (click)="togglePosto(posto)"
         >
-          {{ posto.codice }}
+          <span class="seat-code">{{ posto.codice }}</span>
         </button>
       </ng-container>
 
       <!-- Corridoio centrale -->
-      <div style="width: 80px"></div>
+      <div class="corridor"></div>
 
       <!-- Fila destra corrispondente -->
       <ng-container *ngIf="fileDestra[i]">
         <ng-container *ngFor="let posto of fileDestra[i]">
           <button
-            class="btn me-1"
+            class="btn btn-posto me-1"
             [ngClass]="getStilePosto(posto)"
-            style="width: 60px; height: 60px; font-weight: bold"
             (click)="togglePosto(posto)"
           >
-            {{ posto.codice }}
+            <span class="seat-code">{{ posto.codice }}</span>
           </button>
         </ng-container>
       </ng-container>
@@ -50,23 +48,20 @@
   </ng-container>
 
   <div class="container mt-5">
-
     <div class="mt-4 text-white">
       <legend>Legenda:</legend>
       <p><span class="badge bg-success">Disponibile</span></p>
       <p><span class="badge bg-warning text-dark">Selezionato</span></p>
       <p><span class="badge bg-danger">Occupato</span></p>
     </div>
-
     <div class="mx-auto py-4">
       <button
-        class="btn btn-primary "
+        class="btn btn-primary"
         [disabled]="postiSelezionati.length === 0"
         (click)="vaiAConferma()"
       >
         Prenota
       </button>
     </div>
-
   </div>
 </div>

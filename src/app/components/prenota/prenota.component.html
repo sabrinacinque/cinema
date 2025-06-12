@@ -1,16 +1,32 @@
+<!-- prenota.component.html -->
 <div class="container py-5 text-center">
   <h2 class="mb-4 text-white">Quale film vuoi prenotare?</h2>
 
-  <select class="form-select" [(ngModel)]="selectedFilmId">
-    <option *ngFor="let film of filmList" [value]="film.id">
-      {{ film.titolo }}
-    </option>
-  </select>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-4">
+
+      <!-- List-group scrollabile -->
+      <div
+        class="list-group bg-dark text-white"
+        style="max-height: 200px; overflow-y: auto;"
+      >
+        <button
+          *ngFor="let film of filmList"
+          class="list-group-item list-group-item-action bg-dark text-start text-white"
+          [class.active]="film.id === selectedFilmId"
+          (click)="selectFilm(film.id)"
+        >
+          {{ film.titolo }}
+        </button>
+      </div>
+
+    </div>
+  </div>
 
   <a
     *ngIf="selectedFilmId"
     [routerLink]="['/sala', selectedFilmId]"
-    class="btn btn-success mt-5"
+    class="btn btn-success mt-4"
   >
     Avanti
   </a>

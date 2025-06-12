@@ -1,7 +1,7 @@
+// prenota.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FilmService } from './../../services/film.service';
 import { IFilm } from '../../models/ifilm';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-prenota',
@@ -19,5 +19,9 @@ export class PrenotaComponent implements OnInit {
       next: data => this.filmList = data,
       error: err => console.error('Errore caricamento film', err)
     });
+  }
+
+  selectFilm(id: number) {
+    this.selectedFilmId = id;
   }
 }
