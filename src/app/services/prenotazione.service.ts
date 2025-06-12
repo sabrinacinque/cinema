@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Iprenotazione } from '../models/iprenotazione';
 import { Observable } from 'rxjs';
+import { IprenotazioneRequest } from '../models/iprenotazione-request';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ export class PrenotazioneService {
 
   constructor(private http: HttpClient) {}
 
-  inserisciPrenotazione(prenotazione: Iprenotazione): Observable<any> {
-    return this.http.post(`${this.baseUrl}/inserisci`, prenotazione);
+  // Metodo nuovo (batch, invia idPosti[])
+  inserisciPrenotazioniBatch(req: IprenotazioneRequest): Observable<any> {
+    return this.http.post(`${this.baseUrl}/inserisci`, req,{ responseType: 'text' }  );
   }
 
 
@@ -23,10 +25,19 @@ export class PrenotazioneService {
   getPrenotazioneById(id: number): Observable<Iprenotazione> {
     return this.http.get<Iprenotazione>(`${this.baseUrl}/${id}`);
   }
-  deletePrenotazione(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/eliminaprenotazione/${id}`);
+   // cancella una prenotazione col suo ID
+  deletePrenotazione(id: number): Observable<Iprenotazione> {
+    return this.http.delete<Iprenotazione>(
+      `${this.baseUrl}/eliminaprenotazione/${id}`
+    );
   }
 
+   // CANCELLAZIONE INTERA PRENOTAZIONE (reservationCode è una stringa UUID)
+  deletePrenotazioneCompleta(reservationCode: string): Observable<void> {
+    return this.http.delete<void>(
+      `${this.baseUrl}/elimina-prenotazione-completa/${reservationCode}`
+    );
+  }
 
 
 }

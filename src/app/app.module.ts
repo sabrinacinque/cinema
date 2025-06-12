@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { SalaComponent } from './components/sala/sala.component';
 import { ConfermaPrenotazioneComponent } from './components/conferma-prenotazione/conferma-prenotazione.component';
 import { EliminaPrenotazioneComponent } from './components/elimina-prenotazione/elimina-prenotazione.component';
+import { EliminaPrenotazioneCompletaComponent } from './components/elimina-prenotazione-completa/elimina-prenotazione-completa.component';
 
 
 
@@ -26,7 +27,8 @@ import { EliminaPrenotazioneComponent } from './components/elimina-prenotazione/
     PrenotaComponent,
     SalaComponent,
     ConfermaPrenotazioneComponent,
-    EliminaPrenotazioneComponent
+    EliminaPrenotazioneComponent,
+    EliminaPrenotazioneCompletaComponent
   ],
   imports: [
     BrowserModule,

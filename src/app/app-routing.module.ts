@@ -6,6 +6,7 @@ import { PrenotaComponent } from './components/prenota/prenota.component';
 import { SalaComponent } from './components/sala/sala.component';
 import { ConfermaPrenotazioneComponent } from './components/conferma-prenotazione/conferma-prenotazione.component';
 import { EliminaPrenotazioneComponent } from './components/elimina-prenotazione/elimina-prenotazione.component';
+import { EliminaPrenotazioneCompletaComponent } from './components/elimina-prenotazione-completa/elimina-prenotazione-completa.component';
 
 const routes: Routes = [
   { path: '', component: FilmListComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'sala/:id', component: SalaComponent },
   { path: 'conferma-prenotazione', component: ConfermaPrenotazioneComponent },
   { path: 'elimina-prenotazione/:id', component: EliminaPrenotazioneComponent },
+  { path: 'elimina-prenotazione-completa/:code', component: EliminaPrenotazioneCompletaComponent },
   { path: '**', redirectTo: '' }
 ];
 

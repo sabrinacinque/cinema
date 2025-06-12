@@ -1,0 +1,7 @@
+<!-- src/app/components/elimina-prenotazione-completa/elimina-prenotazione-completa.component.html -->
+<div class="container">
+  <h2>Annulla Prenotazione Completa</h2>
+  <p>Sei sicuro di voler annullare **tutta** la prenotazione?</p>
+  <button class="btn btn-danger" (click)="conferma()">Sì, annulla tutto</button>
+  <div *ngIf="error" class="text-danger mt-3">{{ error }}</div>
+</div>
