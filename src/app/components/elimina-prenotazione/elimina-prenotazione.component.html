@@ -1,19 +1,19 @@
-<div class="container">
+<div class="container mt-4">
   <!-- caso non trovato -->
   <div *ngIf="notFound" class="text-warning">
     <div class="row d-flex justify-content-center align-items-center">
-      <div class="col alert alert-warning" role="alert">
-        <strong>Attenzione!</strong> La prenotazione con ID {{ id }} non è stata trovata oppure è già stata cancellata
+      <div class="col-md-8 alert alert-warning" role="alert">
+        <strong>⚠️ Attenzione!</strong> La prenotazione con ID {{ id }} non è stata trovata oppure è già stata cancellata
       </div>
     </div>
-
   </div>
 
   <!-- caso conferma cancellazione -->
-  <div *ngIf="!notFound">
-    <h2>Annulla Prenotazione #{{ id }}</h2>
-    <p>Sei sicuro di voler annullare la tua prenotazione per il posto ?</p>
-    <button class="btn btn-danger" (click)="conferma()">Sì, annulla</button>
-    <div *ngIf="error" class="text-danger mt-3">{{ error }}</div>
+  <div *ngIf="!notFound" class="text-center">
+    <h2 class="mb-4">🎬 Annulla Prenotazione #{{ id }}</h2>
+    <p class="lead">Clicca il pulsante per procedere con l'annullament del posto singolo</p>
+    <button class="btn btn-danger btn-lg" (click)="conferma()">
+      🗑️ Annulla Prenotazione
+    </button>
   </div>
 </div>
