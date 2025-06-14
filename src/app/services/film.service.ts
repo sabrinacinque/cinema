@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFilm } from '../models/ifilm';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmService {
 
-  private apiUrl = 'http://localhost:8080/film';//qua è dove gli dico di connettermi per la lista delle film, ho fatto il percorso da spring
-
+  private apiUrl = `${environment.apiUrl}/film`;
   constructor(private http: HttpClient) {}
 
   getFilms(): Observable<IFilm[]> {
