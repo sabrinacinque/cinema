@@ -15,6 +15,7 @@ import { ConfermaPrenotazioneComponent } from './components/conferma-prenotazion
 import { EliminaPrenotazioneComponent } from './components/elimina-prenotazione/elimina-prenotazione.component';
 import { EliminaPrenotazioneCompletaComponent } from './components/elimina-prenotazione-completa/elimina-prenotazione-completa.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { InstallButtonComponent } from './install-button/install-button.component';
 
 
 
@@ -29,7 +30,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     SalaComponent,
     ConfermaPrenotazioneComponent,
     EliminaPrenotazioneComponent,
-    EliminaPrenotazioneCompletaComponent
+    EliminaPrenotazioneCompletaComponent,
+    InstallButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +39,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     HttpClientModule,
     FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
+      enabled: false,
       registrationStrategy: 'registerWhenStable:30000'
     })
 
